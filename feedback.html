@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Feedback Form with Star Rating</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        /* CSS styles for the star rating */
+        .rating {
+            display: inline-block;
+            font-size: 0;
+        }
+        .rating input {
+            display: none;
+        }
+        .rating label {
+            float: right;
+            color: #ddd;
+            font-size: 30px;
+            cursor: pointer;
+        }
+        .rating input:checked ~ label {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <h2>Feedback Form with Star Rating</h2>
+    <form id="ratingForm">
+        <div class="rating">
+            <input type="radio" id="star5" name="rating" value="5" /><label for="star5">&#9733;</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label for="star4">&#9733;</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label for="star3">&#9733;</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label for="star2">&#9733;</label>
+            <input type="radio" id="star1" name="rating" value="1" /><label for="star1">&#9733;</label>
+        </div>
+        <br>
+        <input type="button" value="Submit Rating" onclick="submitRating()">
+    </form>
+    <div id="result"></div>
+
+    <script>
+        function submitRating() {
+            var rating = document.querySelector('input[name="rating"]:checked').value;
+            if (rating) {
+                document.getElementById('result').innerHTML = 'Thank you for your rating of ' + rating + ' stars!';
+            } else {
+                document.getElementById('result').innerHTML = 'Please select a rating.';
+            }
+        }
+    </script>
+</body>
+</html>
